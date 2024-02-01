@@ -1,9 +1,9 @@
 package main
 
 import (
-	"h4g-vms/backend/pkg/config"
-	"h4g-vms/backend/pkg/handlers"
-	"h4g-vms/backend/pkg/store"
+	"h4g-vms/pkg/config"
+	"h4g-vms/pkg/handlers"
+	"h4g-vms/pkg/store"
 	"log"
 	"net/http"
 

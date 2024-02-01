@@ -2,7 +2,7 @@ package store
 
 import (
 	"database/sql"
-	"h4g-vms-backend/backend/pkg/models"
+	"h4g-vms/pkg/models"
 )
 
 type Store struct {

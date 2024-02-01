@@ -1,7 +1,7 @@
 package handlers
 
 import (
-	"h4g-vms/backend/pkg/store"
+	"h4g-vms/pkg/store"
 	"net/http"
 
 	"github.com/go-chi/chi"
