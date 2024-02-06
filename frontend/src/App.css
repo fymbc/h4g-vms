@@ -14,10 +14,10 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #E9ECF4;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
@@ -35,4 +35,48 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.LoginBox{
+  background-color: #7F6AFF;
+  padding: 5%;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px
+}
+
+.LeftBox {
+  background-color: white;
+  padding: 20px;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.inputContainer > .errorLabel {
+  color: red;
+  font-size: 12px;
+}
+
+.inputBox {
+  height: 48px;
+  width: 400px;
+  font-size: large;
+  border-radius: 8px;
+  border: 1px solid lightgrey;
+  padding-left: 8px;
+  margin-top: 10%;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 260px;
 }
