@@ -118,5 +118,16 @@
   border-radius: 8px;
   cursor: pointer;
   display: block;
-  margin-top: 6%
+  margin-top: 10%
+}
+
+.Banner{
+  background: #7F6AFF;
+  font-size: 40px;
+  color: white;
+  padding-left: 3%;
+  margin-top: 2%;
+  display: flex;
+  justify-content: left;
+  box-shadow: 3px 3px 3px grey;
 }
