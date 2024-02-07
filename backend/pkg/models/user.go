@@ -5,3 +5,4 @@ type User struct {
 	Email             string `json:"email"`
 	EncryptedPassword string `json:"encrypted_password"`
 }
+
