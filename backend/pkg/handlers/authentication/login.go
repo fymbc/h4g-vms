@@ -24,7 +24,7 @@ type LoginResponse struct {
 
 func LogIn(dbStore *store.Store ) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		db := dbStore.Db
+		db := dbStore.DB
 		var logInParams LogInParams
 		err := json.DecodeParams(r.Body, &logInParams)
 		if err != nil {

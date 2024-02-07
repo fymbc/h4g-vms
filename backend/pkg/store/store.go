@@ -6,12 +6,10 @@ import (
 )
 
 type Store struct {
-    Db *gorm.DB
+    DB *gorm.DB
 }
 
-
-
-func Connect() (*gorm.DB, error) {
+func Open() (*Store, error) {
     dsn := "dbname=postgres user=postgres password=postgres host=localhost port=5432 sslmode=disable"
     dbDriver := postgres.Open(dsn)
 
@@ -19,15 +17,10 @@ func Connect() (*gorm.DB, error) {
     if err != nil {
         return nil, err
     }
-    return db, nil
-}
-
-func GetDB() (*gorm.DB, error) {
-    db, err := Connect()
-    if err != nil {
-        return nil, err
+    dbStore := &Store{
+        DB: db,
     }
-    return db, nil
+    return dbStore, nil
 }
 
 
