@@ -70,7 +70,7 @@
   border-radius: 8px;
   border: 1px solid lightgrey;
   padding-left: 8px;
-  margin-top: 10%;
+  margin-bottom: 5%;
 }
 
 .buttonContainer {
@@ -79,4 +79,44 @@
   align-items: center;
   justify-content: center;
   height: 260px;
+}
+
+.LoginTitle{
+  color: black;
+  display: flex;
+  padding-left: 2%;
+  font-size: 28px;
+}
+
+.EmailTitle{
+  color: black;
+  display: flex;
+  font-size: 20px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.LoginButton{
+  border: none;
+  background: cornflowerblue;
+  color: white;
+  padding: 12px 24px;
+  margin: 8px auto;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: block;
+}
+
+.SignupButton{
+  border: none;
+  background: lightcoral;
+  color: white;
+  padding: 12px 24px;
+  margin: 8px auto;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: block;
+  margin-top: 6%
 }
