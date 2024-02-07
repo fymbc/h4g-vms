@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"encoding/json"
+	"h4g-vms/pkg/handlers/activities"
 	authentication "h4g-vms/pkg/handlers/authentication"
 	"h4g-vms/pkg/models"
 	"h4g-vms/pkg/store"
@@ -15,14 +16,23 @@ func SetupRoutes(r *chi.Mux, dbStore *store.Store) {
     // Public routes
 	r.Route("/", func(r chi.Router) {
 		r.Get("/login", authentication.LogIn(dbStore))
-		r.Get("/index", indexHandler(dbStore))
-		r.Get("/signup", signupHandler(dbStore))
-		r.Get("/opportunities", opportunitiesHandler(dbStore))
-		r.Route("/enrol", func(r chi.Router) {
-			r.Get("/{id}", enrolHandler(dbStore))
-		})
-		r.Post("/feedback", feedbackHandler(dbStore))
+		r.Get("/signup", authentication.SignUp(dbStore))
+		// r.Route("/enrol", func(r chi.Router) {
+		// 	r.Get("/{id}", enrolHandler(dbStore))
+		// })
+		// r.Post("/feedback", feedbackHandler(dbStore))
 	})
+
+    r.Route("/activities", func(r chi.Router) {
+        r.Get("/", activities.HandleList(dbStore))
+        r.Post("/", activities.HandleCreate(dbStore))
+        r.Route("/{id}", func(r chi.Router) {
+            r.Get("/{id}", activities.HandleRead(dbStore))
+            r.Put("/", activities.HandleUpdate(dbStore))
+            r.Delete("/", activities.HandleDelete(dbStore))
+		})
+
+    })
 
     // Admin routes
 	r.Route("/admin", func(r chi.Router) {

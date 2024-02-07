@@ -1,7 +1,7 @@
 package main
 
 import (
-	"h4g-vms/pkg/config"
+	// "h4g-vms/pkg/config"
 	"h4g-vms/pkg/handlers"
 	"h4g-vms/pkg/store"
 	"log"
@@ -11,16 +11,9 @@ import (
 )
 
 func main() {
-    // Load configuration
-    cfg, err := config.Load()
+    dbStore, err := store.Open()
     if err != nil {
-        log.Fatalf("Failed to load configuration: %v", err)
-    }
-
-    // Initialize the store
-    dbStore, err := store.New(cfg.DatabaseURL)
-    if err != nil {
-        log.Fatalf("Failed to create store: %v", err)
+        log.Fatalf("Failed to open database: %v", err)
     }
 
     // Create a router

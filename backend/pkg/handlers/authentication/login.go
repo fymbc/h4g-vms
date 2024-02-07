@@ -64,7 +64,7 @@ func LogIn(dbStore *store.Store ) http.HandlerFunc {
 		w.Header().Set("Content-Type", "application/json")
 		data, err := json.EncodeView(response)
 		if err != nil {
-			http.Error(w, "Failed to encode response", http.StatusInternalServerError)
+			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
 		w.Write(data)
