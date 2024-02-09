@@ -33,10 +33,10 @@ const Login = (props) => {
             return
         }
 
+        navigate("./dashboard")
+
         //TODO: Authentication logic and link to database
     }
-
-
 
 return <div className="App-header">
     <div className="LeftBox">
