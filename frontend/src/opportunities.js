@@ -46,23 +46,7 @@ const Dashboard = (props) => {
                 </Menu>
             </Sidebar>  
             <div className = "Timeline">
-                <h1>My Timeline</h1>
-                <Chrono 
-                    items={items} 
-                    mode="VERTICAL" 
-                    hideControls = "true"
-                    cardWidth = "900"
-                    fontSizes={{
-                        cardSubtitle: '3vh',
-                        cardText: '50px',
-                        cardTitle: '5vh',
-                        title: '3vh'}}
-                    >
-                </Chrono>
-            </div>
-            <div className = "PastEvents">
-                <h1>My Past Events</h1>
-                <h3> You currently do not have any past events.</h3>
+
             </div>
         </div>
     </div>
