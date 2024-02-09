@@ -40,7 +40,7 @@ const Dashboard = (props) => {
             <Sidebar>
                 <Menu>
                 <MenuItem icon={<HomeOutlinedIcon />} component={<Link to="/dashboard" />}>Dashboard</MenuItem>
-                <MenuItem icon={<Diversity1OutlinedIcon />} component={<Link to="/opportunities" />}>Opportunities</MenuItem>
+                <MenuItem icon={<Diversity1OutlinedIcon />} component={<Link to="/activities" />}>Opportunities</MenuItem>
                 <MenuItem icon={<CardGiftcardOutlinedIcon />} component={<Link to="/certificates" />}>Certificates</MenuItem>
                 <MenuItem icon={<SettingsOutlinedIcon />} component={<Link to="/settings" />}>Profile</MenuItem>
                 </Menu>

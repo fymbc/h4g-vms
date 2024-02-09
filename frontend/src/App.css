@@ -124,6 +124,11 @@
   padding: 2vw;
 }
 
+.Modules {
+  flex: 1;
+  padding: 2vw;
+}
+
 .PastEvents {
   flex: 0 0 20%;
   padding: 2vw;
@@ -149,4 +154,33 @@
 .hJwDfp {
   margin: 2vh !important;
   padding-top: 1vh !important;
+}
+
+.MuiCard-root{
+  margin-top: 1vh;
+  padding-bottom: 1vh;
+  width: 80%;
+}
+
+.MuiTypography-root{
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif !important;
+  font-size: 1vw !important;
+}
+
+.ModuleTitle{
+  color:#7F6AFF;
+  font-size: 3vh !important;
+  font-weight: bold !important;
+}
+
+.CertDescription{
+  flex: 1;
+  padding: 2vw;
+  text-align: left;
+}
+
+.MuiTableCell-root{
+  font-size: 1.5vw !important;
 }
