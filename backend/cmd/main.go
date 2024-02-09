@@ -11,7 +11,7 @@ import (
 )
 
 func main() {
-    dbStore, err := store.Open()
+    dbStore, _, err := store.Open()
     if err != nil {
         log.Fatalf("Failed to open database: %v", err)
     }
@@ -23,5 +23,8 @@ func main() {
     handlers.SetupRoutes(r, dbStore)
 
     // Start the server
+    log.Printf("Listening on :8080")
     log.Fatal(http.ListenAndServe(":8080", r))
+
+
 }

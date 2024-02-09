@@ -1,6 +1,8 @@
 package store
 
 import (
+	"h4g-vms/pkg/config"
+
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -9,18 +11,19 @@ type Store struct {
     DB *gorm.DB
 }
 
-func Open() (*Store, error) {
-    dsn := "dbname=postgres user=postgres password=postgres host=localhost port=5432 sslmode=disable"
+func Open() (*Store, *config.Config, error) {
+    cfg := config.Load()
+    dsn := config.BuildDSN(cfg)
     dbDriver := postgres.Open(dsn)
 
     db, err := gorm.Open(dbDriver, &gorm.Config{})
     if err != nil {
-        return nil, err
+        return nil, nil, err
     }
     dbStore := &Store{
         DB: db,
     }
-    return dbStore, nil
+    return dbStore, cfg, nil
 }
 
 
