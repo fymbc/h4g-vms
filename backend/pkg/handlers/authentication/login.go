@@ -11,18 +11,16 @@ import (
 )
 
 type LogInParams struct {
-	Email string `json:"email"`
+	Email    string `json:"email"`
 	Password string `json:"password"`
 }
 
 type LoginResponse struct {
-	Success bool `json:"success"`
+	Success bool   `json:"success"`
 	Message string `json:"message"`
 }
 
-
-
-func LogIn(dbStore *store.Store ) http.HandlerFunc {
+func LogIn(dbStore *store.Store) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		db := dbStore.DB
 		var logInParams LogInParams

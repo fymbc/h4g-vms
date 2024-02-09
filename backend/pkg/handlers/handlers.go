@@ -9,28 +9,29 @@ import (
 )
 
 func SetupRoutes(r *chi.Mux, dbStore *store.Store) {
-    // Public routes
+	// Public routes
 	r.Route("/", func(r chi.Router) {
-		r.Get("/login", authentication.LogIn(dbStore))
-		r.Get("/signup", authentication.SignUp(dbStore))
+		r.Post("/login", authentication.LogIn(dbStore))
+		r.Post("/signup", authentication.SignUp(dbStore))
 		// r.Route("/enrol", func(r chi.Router) {
 		// 	r.Get("/{id}", enrolHandler(dbStore))
 		// })
 		// r.Post("/feedback", feedbackHandler(dbStore))
 	})
 
-    r.Route("/activities", func(r chi.Router) {
-        r.Get("/", activities.HandleList(dbStore))
-        r.Post("/", activities.HandleCreate(dbStore))
-        r.Route("/{id}", func(r chi.Router) {
-            r.Get("/{id}", activities.HandleRead(dbStore))
-            r.Put("/", activities.HandleUpdate(dbStore))
-            r.Delete("/", activities.HandleDelete(dbStore))
+	r.Route("/activities", func(r chi.Router) {
+		r.Get("/", activities.HandleList(dbStore))
+		r.Post("/", activities.HandleCreate(dbStore))
+		r.Route("/{id}", func(r chi.Router) {
+			r.Get("/", activities.HandleRead(dbStore))
+			r.Put("/", activities.HandleUpdate(dbStore))
+			r.Delete("/", activities.HandleDelete(dbStore))
+			r.Post("/enrol", activities.HandleEnrol(dbStore))
 		})
 
-    })
+	})
 
-    // Admin routes
+	// Admin routes
 	// r.Route("/admin", func(r chi.Router) {
 	// 	r.Use(AdminOnly) // Middleware to check if the user is an admin
 	// 	r.Get("/dashboard", dashboardHandler(dbStore))
@@ -39,7 +40,6 @@ func SetupRoutes(r *chi.Mux, dbStore *store.Store) {
 	// 	r.Get("/volunteers", volunteersHandler(dbStore))
 	// })
 }
-
 
 // // AdminOnly is a middleware function to check if the user is an admin.
 // func AdminOnly(next http.Handler) http.Handler {

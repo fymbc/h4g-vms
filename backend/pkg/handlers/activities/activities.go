@@ -25,6 +25,11 @@ type baseParams struct {
 	Description string `json:"description"`
 }
 
+type EnrolParams struct {
+	UserID     int `json:"user_id"`
+	ActivityID int `json:"activity_id"`
+}
+
 func (p *CreateParams) ToModel() *models.Activity {
 	return p.baseParams.ToModel()
 }
@@ -39,6 +44,13 @@ func (p *baseParams) ToModel() *models.Activity {
 	return &models.Activity{
 		Name:        p.Name,
 		Description: p.Description,
+	}
+}
+
+func (p *EnrolParams) ToModel() *models.ActivityRegistration {
+	return &models.ActivityRegistration{
+		UserID:     p.UserID,
+		ActivityID: p.ActivityID,
 	}
 }
 
@@ -63,7 +75,7 @@ func HandleList(dbStore *store.Store) http.HandlerFunc {
 func HandleRead(dbStore *store.Store) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		db := dbStore.DB
-		param := chi.URLParam(r, "activityId")
+		param := chi.URLParam(r, "id")
 		activityId, err := strconv.Atoi(param)
 		if err != nil {
 			http.Error(w, "Invalid activity ID", http.StatusBadRequest)
@@ -87,13 +99,14 @@ func HandleRead(dbStore *store.Store) http.HandlerFunc {
 func HandleCreate(dbStore *store.Store) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		db := dbStore.DB
-		var activity models.Activity
-		err := json.DecodeParams(r.Body, &activity)
+		var params CreateParams
+		err := json.DecodeParams(r.Body, &params)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusBadRequest)
 			return
 		}
-		createdActivity, err := activities.Create(db, &activity)
+		activity := params.ToModel()
+		createdActivity, err := activities.Create(db, activity)
 		if err != nil {
 			http.Error(w, "Failed to create activity", http.StatusInternalServerError)
 			return
@@ -111,7 +124,7 @@ func HandleCreate(dbStore *store.Store) http.HandlerFunc {
 func HandleUpdate(dbStore *store.Store) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		db := dbStore.DB
-		param := chi.URLParam(r, "activityId")
+		param := chi.URLParam(r, "id")
 		activityId, err := strconv.Atoi(param)
 		if err != nil {
 			http.Error(w, "Invalid activity ID", http.StatusBadRequest)
@@ -147,7 +160,7 @@ func HandleUpdate(dbStore *store.Store) http.HandlerFunc {
 func HandleDelete(dbStore *store.Store) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		db := dbStore.DB
-		param := chi.URLParam(r, "activityId")
+		param := chi.URLParam(r, "id")
 		activityId, err := strconv.Atoi(param)
 		if err != nil {
 			http.Error(w, "Invalid activity ID", http.StatusBadRequest)
@@ -159,5 +172,31 @@ func HandleDelete(dbStore *store.Store) http.HandlerFunc {
 			return
 		}
 		w.WriteHeader(http.StatusNoContent)
+	}
+}
+
+func HandleEnrol(dbStore *store.Store) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		db := dbStore.DB
+		var params EnrolParams
+		print(r.Body)
+		err := json.DecodeParams(r.Body, &params)
+		if err != nil {
+			http.Error(w, "Failed to decode request body", http.StatusBadRequest)
+			return
+		}
+		activityregistration := params.ToModel()
+
+		enrolment, err := activities.Enrol(db, activityregistration)
+		if err != nil {
+			http.Error(w, "Failed to enrol activity", http.StatusInternalServerError)
+			return
+		}
+		data, err := json.EncodeView(enrolment)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+		w.Write(data)
 	}
 }

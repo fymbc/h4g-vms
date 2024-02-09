@@ -33,3 +33,7 @@ func Delete(db *gorm.DB, activityId int) error {
 	return result.Error
 }
 
+func Enrol(db *gorm.DB, enrolment *models.ActivityRegistration) (*models.ActivityRegistration, error) {
+	result := db.Create(enrolment).First(enrolment)
+	return enrolment, result.Error
+}
