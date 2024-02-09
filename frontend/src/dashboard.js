@@ -4,29 +4,41 @@ import React, { useState } from "react";
 const Dashboard = (props) => {
 
     const username = useState("Admin"); //Change to username
-
-
     return <div>
         <div className = 'Banner'>
             <h1>Welcome, {username}!</h1>
         </div>
-        <div>
-            <table className = "Sidebar">
-                <tbody>
-                    <tr>
-                        <td>Dashboard</td>
-                    </tr>
-                    <tr>
-                        <td>Opportunities</td>
-                    </tr>
-                    <tr>
-                        <td>Certificates</td>
-                    </tr>
-                    <tr>
-                        <td>Settings</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div className = "MainBody">
+            <div>
+                <table>
+                    <tbody className = "Sidebar">
+                        <tr>
+                            <td>
+                                <img src = "logo192.png"></img>
+                                <br />Dashboard
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><img src = "logo192.png"></img>
+                                <br />Opportunities
+                            </td>   
+                        </tr>
+                        <tr>
+                            <td><img src = "logo192.png"></img>
+                                <br />Certificates
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><img src = "logo192.png"></img>
+                                <br />Settings
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div className = "Timeline">
+                <h1>My <br />Timeline</h1>
+            </div>
         </div>
     </div>
 }
