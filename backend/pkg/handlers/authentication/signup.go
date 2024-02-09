@@ -12,12 +12,12 @@ import (
 )
 
 type SignUpParams struct {
-	Email string `json:"email"`
+	Email    string `json:"email"`
 	Password string `json:"password"`
 }
 
 type SignUpResponse struct {
-	Success bool `json:"success"`
+	Success bool   `json:"success"`
 	Message string `json:"message"`
 }
 
@@ -25,6 +25,7 @@ func SignUp(dbStore *store.Store) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		db := dbStore.DB
 		var signUpParams SignUpParams
+
 		err := json.DecodeParams(r.Body, &signUpParams)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusBadRequest)
@@ -38,7 +39,7 @@ func SignUp(dbStore *store.Store) http.HandlerFunc {
 		}
 
 		user := models.User{
-			Email: signUpParams.Email,
+			Email:             signUpParams.Email,
 			EncryptedPassword: string(encryptedPassword),
 		}
 
@@ -58,7 +59,7 @@ func SignUp(dbStore *store.Store) http.HandlerFunc {
 			Success: true,
 			Message: fmt.Sprintf("User \"%s\" created", createdUser.Email),
 		}
-		
+
 		w.Header().Set("Content-Type", "application/json")
 		data, err := json.EncodeView(response)
 		if err != nil {
