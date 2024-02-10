@@ -1,70 +1,27 @@
-# Getting Started with Create React App
+# Hack4Good - VolunteerBAH Volunteer Management System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Inspiration
+As one of our members is a volunteer of AIC as a Silver Generation Ambassador, we took inspiration from AIC's own VMS, including pain points and good practices, and transferring them to our own VMS.
 
-## Available Scripts
+## What it does
+Sign up via Singpass. Access your timeline of upcoming events. View your past events. Request certificates from admins. Enrol in new opportunities.
 
-In the project directory, you can run:
+## How we built it
+Frontend: React.js with Material UI, React Chrono
+Backend: PostgreSQL, Golang
 
-### `npm start`
+## Challenges we ran into
+Tight time constraints due to our busy schedule. We're a little disappointed that we could not finish the functionalities that we wanted to, but it was a good learning experience!
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+We also could not get our linkup request to Singpass API approved in time for the signup functionality we intended, but hopefully that will come soon!
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Accomplishments that we're proud of
+Most components are functional less for linking backend with frontend. It was one of our first few times building a web application and exploring React so we are glad to have learnt alot in the past week!
 
-### `npm test`
+## What we learned
+How to use React, its very useful libraries, using Golang for database storage.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## What's next for VolunteerBAH
+Linking backend to frontend for functional API calls and non-dummy data
+Installing admin pages
+Developing form creation
