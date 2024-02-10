@@ -1,5 +1,7 @@
 # Hack4Good - VolunteerBAH Volunteer Management System
 
+This project was built with React. Use ``npm start`` to run the project.
+
 ## Inspiration
 As one of our members is a volunteer of AIC as a Silver Generation Ambassador, we took inspiration from AIC's own VMS, including pain points and good practices, and transferring them to our own VMS.
 
